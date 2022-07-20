@@ -7,7 +7,7 @@ import Header from '../../components/Header'
 import style from './style'
 import { currencyFormatter } from '../../helpers/formatter'
 import { addProductAction } from '../../redux/actionCreators/cart'
-const REACT_APP_BE_HOST = 'http://192.168.54.238:8000';
+const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
 
 export default function ProductDetail(props) {
   const [loading, setLoading] = useState(false)

@@ -9,8 +9,8 @@ export default function Register({navigation}) {
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState({
     email: '',
-    pass: '',
-    mobile_number: ''
+    password: '',
+    phone: ''
   })
 
   const registerHandler = async () => {
@@ -38,10 +38,10 @@ export default function Register({navigation}) {
           onChange={(e)=> setInput({...input, email: e.nativeEvent.text})}
           />
           <TextInput style={style.input} placeholder='Enter your password' placeholderTextColor='#cccccc' secureTextEntry={true}
-          onChange={(e)=> setInput({...input, pass: e.nativeEvent.text})}
+          onChange={(e)=> setInput({...input, password: e.nativeEvent.text})}
           />
           <TextInput style={style.input} placeholder='Enter your phone number' placeholderTextColor='#cccccc' keyboardType='numeric'
-          onChange={(e)=> setInput({...input, mobile_number: e.nativeEvent.text})}
+          onChange={(e)=> setInput({...input, phone: e.nativeEvent.text})}
           />
           <Pressable style={style.button} onPress={registerHandler}>
             <Text style={style.buttonText}>Create Account</Text>

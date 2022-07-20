@@ -8,7 +8,7 @@ import style from './style'
 import Header from '../../components/Header'
 import ProductCard from '../../components/ProductCard'
 import { getUserAction } from '../../redux/actionCreators/user'
-const REACT_APP_BE_HOST = 'http://192.168.54.238:8000';
+const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
 
 export default function Home(props) {
   const [menu, setMenu] = useState('all')
@@ -75,8 +75,8 @@ export default function Home(props) {
         <Text style={menu === 'coffee' ? style.categoryTextAct : style.categoryText}
           onPress={() => setMenu('coffee')}
         >Coffee</Text>
-        <Text style={menu === 'noncoffee' ? style.categoryTextAct : style.categoryText}
-          onPress={() => setMenu('noncoffee')}
+        <Text style={menu === 'non coffee' ? style.categoryTextAct : style.categoryText}
+          onPress={() => setMenu('non coffee')}
         >Non Coffee</Text>
         <Text style={menu === 'food' ? style.categoryTextAct : style.categoryText}
           onPress={() => setMenu('food')}

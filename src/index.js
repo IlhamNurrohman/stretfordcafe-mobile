@@ -12,6 +12,8 @@ import ProductDetail from './screens/ProductDetail'
 import Cart from './screens/Cart'
 import Delivery from './screens/Delivery'
 import Payment from './screens/Payment'
+import Profile from './screens/Profile'
+import History from './screens/History'
 
 const Drawer = createDrawerNavigator()
 
@@ -23,6 +25,8 @@ const DrawerNav = () => {
         <Drawer.Screen name='Cart' component={Cart} options={{ headerShown: false }}/>
         <Drawer.Screen name='Delivery' component={Delivery} options={{ headerShown: false }}/>
         <Drawer.Screen name='Payment' component={Payment} options={{ headerShown: false }}/>
+        <Drawer.Screen name='Profile' component={Profile} options={{ headerShown: false }}/>
+        <Drawer.Screen name='History' component={History} options={{ headerShown: false }}/>
       </Drawer.Navigator>
   )
 }
@@ -32,7 +36,7 @@ const Router = () => {
   return (
     <>
       <StatusBar barStyle={"light-content"} hidden={true} />
-      <Navigator initialRouteName='Login'
+      <Navigator initialRouteName='History'
         screenOptions={{
           headerShown: false
         }}>
