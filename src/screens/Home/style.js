@@ -8,6 +8,11 @@ export default StyleSheet.create({
     fontSize: 34,
     color: '#000000'
   },
+  title2: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: 17,
+    color: '#6A4029'
+  },
   searchContainer: {
     display: 'flex',
     height: 40,

@@ -1,19 +1,21 @@
 import { View, Text, Pressable, Image, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-// import { REACT_APP_BE_HOST } from '@env'
+import { REACT_APP_BE_HOST } from '@env'
 import style from './style'
 import Octicons from 'react-native-vector-icons/Octicons'
 import Header from '../../components/Header'
 import { currencyFormatter } from '../../helpers/formater'
 import axios from 'axios'
-const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
+import { sendLocalNotification } from '../../helpers/nofitication'
+// const REACT_APP_BE_HOST = 'http://192.168.32.238:8000';
+
 
 export default function Payment(props) {
   const [payment, setPayment] = useState('')
   const [loading, setLoading] = useState(false)
   const { product } = useSelector(state => state.cart)
-  const { token } = useSelector(state => state.auth.userInfo)
+  const { userInfo, isLoading } = useSelector(state => state.auth)
   const { id } = useSelector(state => state.user.userData)
 
   const paymentHandler = async () => {
@@ -33,12 +35,15 @@ export default function Payment(props) {
         promos_id: product.promo,
         created_at
       }
-      const config = { headers: { Authorization: `Bearer ${token}` } }
+      const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
       const response = await axios.post(`${REACT_APP_BE_HOST}/transactions`, body, config)
       console.log(response)
       console.log('SUCCESS')
       setLoading(false)
-      ToastAndroid.show('Payment success', ToastAndroid.SHORT)
+      sendLocalNotification(
+        'Payment Status',
+        'Payment successfully, please check your history for detail!',
+      );
     } catch (error) {
       console.log(error)
       console.log('ERROR')
@@ -82,9 +87,18 @@ export default function Payment(props) {
           <Text style={style.subtitle}>Total</Text>
           <Text style={style.subtitle}>{currencyFormatter.format(product.subtotal)}</Text>
         </View>
-        <Pressable style={style.paymentBtn} onPress={paymentHandler}>
+        {/* <Pressable style={style.paymentBtn} onPress={paymentHandler}>
           <Text style={style.paymentTxt}>Proceed payment</Text>
-        </Pressable>
+        </Pressable> */}
+        {isLoading ?
+            <Pressable style={style.paymentBtn}>
+              <ActivityIndicator />
+            </Pressable>
+            :
+            <Pressable style={style.paymentBtn} onPress={paymentHandler}>
+              <Text style={style.paymentTxt}>{isLoading ? 'Loading..' : 'Proceed payment'}</Text>
+            </Pressable>
+          }
       </View>
     </>
   )

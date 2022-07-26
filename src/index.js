@@ -19,6 +19,8 @@ import AllProduct from './screens/Product'
 import EditPasswordProfile from './screens/EditPasswordProfile'
 import ResetPassword from './screens/ResetPassword'
 import Welcome from './screens/Welcome'
+import AddProduct from './screens/AddProduct'
+import AddPromo from './screens/AddPromo'
 
 
 const Drawer = createDrawerNavigator()
@@ -35,6 +37,8 @@ const DrawerNav = () => {
         <Drawer.Screen name='EditProfile' component={EditProfile} options={{ headerShown: false }}/>
         <Drawer.Screen name='AllProduct' component={AllProduct} options={{ headerShown: false }}/>
         <Drawer.Screen name='History' component={History} options={{ headerShown: false }}/>
+        <Drawer.Screen name='AddProduct' component={AddProduct} options={{ headerShown: false }}/>
+        <Drawer.Screen name='AddPromo' component={AddPromo} options={{ headerShown: false }}/>
         {/* <Drawer.Screen name='EditPasswordProfile' component={EditPasswordProfile} options={{ headerShown: false }}/> */}
       </Drawer.Navigator>
   )
@@ -46,12 +50,11 @@ const Router = () => {
     <>
       <StatusBar barStyle={"light-content"} hidden={true} />
       <Navigator 
-      initialRouteName='Start'
+      initialRouteName='AddProduct'
         screenOptions={{
           headerShown: false
         }}
         >
-        <Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
         <Screen name='Start' component={Start} options={{ headerShown: false }} />
         <Screen name='Register' component={Register} options={{ headerShown: false }}/>
         <Screen name='Login' component={Login} options={{ headerShown: false }} />
@@ -59,6 +62,7 @@ const Router = () => {
         <Screen name='Drawer' component={DrawerNav} options={{ headerShown: false }}/>
         <Screen name='EditPasswordProfile' component={EditPasswordProfile} options={{ headerShown: false }} />
         <Screen name='Forgot' component={Forgot} options={{ headerShown: false }} />
+        <Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
         </Navigator>
     </>
   )

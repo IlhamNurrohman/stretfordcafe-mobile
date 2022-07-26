@@ -51,4 +51,37 @@ export default StyleSheet.create({
     fontSize: 17,
     color: '#6A4029'
   },
+  modalContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#00000070',
+  },
+  modalBody: {
+    width: 365,
+    height: 280,
+    backgroundColor: '#e9e9e9',
+    padding: 20,
+    borderRadius: 15,
+    marginTop: 350,
+    alignItems: 'center',
+  },
+  titleModal: {
+    fontSize: 30,
+    color: 'black',
+  },
+  btnLogout: {
+    marginTop: 15,
+    backgroundColor: '#6A4029',
+    borderRadius: 10,
+  },
+  btnCancel: {
+    marginTop: 15,
+    // backgroundColor: '#6A4029',
+    borderRadius: 10,
+  },
+  containerBtnUpload: {
+    width: '90%',
+  },
 })

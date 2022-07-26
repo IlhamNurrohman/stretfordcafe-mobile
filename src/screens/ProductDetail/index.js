@@ -2,12 +2,12 @@ import { View, Text, Image, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-// import { REACT_APP_BE_HOST } from '@env'
+import { REACT_APP_BE_HOST } from '@env'
 import Header from '../../components/Header'
 import style from './style'
 import { currencyFormatter } from '../../helpers/formatter'
 import { addProductAction } from '../../redux/actionCreators/cart'
-const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
+// const REACT_APP_BE_HOST = 'http://192.168.32.238:8000';
 
 export default function ProductDetail(props) {
   const [loading, setLoading] = useState(false)

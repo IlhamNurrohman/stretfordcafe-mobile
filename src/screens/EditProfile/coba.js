@@ -7,10 +7,11 @@ import { REACT_APP_BE_HOST } from '@env'
 import Toast from 'react-native-toast-message'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import { Button } from '@rneui/base';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Ion from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+// import ImagePicker from 'react-native-image-picker';
 import Header from '../../components/Header'
 import style from './style'
 import moment from 'moment'
@@ -20,9 +21,10 @@ import { getUserAction } from '../../redux/actionCreators/user'
 export default function EditProfile(props) {
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
-  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [gender, setGender] = useState('')
+  const [data, setData] = useState({})
   const [modal, setModal] = useState({
     modalUpload: false,
     modalStatus: false,
@@ -56,52 +58,53 @@ export default function EditProfile(props) {
     })
   }
 
-  const openCam = async () => {
-    const options = {
-      mediaType: 'photo',
-      quality: 1,
-    };
-    try {
-      const result = await launchCamera(options);
-      setFile({
-        name: result.assets[0].fileName,
-        size: result.assets[0].fileSize,
-        type: result.assets[0].type,
-        uri: result.assets[0].uri,
-        height: result.assets[0].height,
-        width: result.assets[0].width,
+  const takePhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(pictures => {
+      console.log(pictures);
+      setBody({
+        ...body,
+        pictures: {
+          uri: pictures.path,
+          type: pictures.mime,
+          name: pictures.path,
+        },
       });
-    } catch (error) {
-      console.log(error);
-    }
+      setModal({ ...modal, modalUpload: false });
+    }).catch(error => {
+      console.log(error)
+    });
   };
-
-  const openStorage = async () => {
-    const options = {
-      mediaType: 'photo',
-      quality: 1,
-    };
-    try {
-      const result = await launchImageLibrary(options);
-      setFile({
-        name: result.assets[0].fileName,
-        size: result.assets[0].fileSize,
-        type: result.assets[0].type,
-        uri: result.assets[0].uri,
-        height: result.assets[0].height,
-        width: result.assets[0].width,
+  const chooseFromLibrary = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(pictures => {
+      console.log(pictures);
+      setBody({
+        ...body,
+        pictures: {
+          uri: pictures.path,
+          type: pictures.mime,
+          name: pictures.path,
+        },
       });
-    } catch (error) {
-      console.log(error);
-    }
+      setModal({ ...modal, modalUpload: false });
+    }).catch(error => {
+      console.log(error)
+    });
   };
 
   const updateHandler = async () => {
     try {
       setLoading(true)
-      const { phone, username, address, date, gender, email } = body
+      const { phone, username, address, date, gender, pictures, email } = body
       let newBody = new FormData()
-      newBody.append('pictures', file);
+      newBody.append('pictures', pictures);
       newBody.append('phone', phone);
       newBody.append('email', email);
       newBody.append('username', username);
@@ -134,20 +137,23 @@ export default function EditProfile(props) {
       <View style={style.container}>
         <Text style={style.title}>Edit Profile</Text>
         <View style={style.imgContainer}>
-          <Image source=
-          {
-            file.uri
-                ? {uri: file.uri}
-                : body.file
-                ? {uri: body.file}
-                : userInfo.pictures
-                ? {uri: userInfo.pictures}
-                : require('../../assets/img/profpict.png')} 
-                style={style.profpict} />
-          <Pressable style={style.pencilContainer}
+          {/* <Image
+            source={{
+              uri: body.pictures
+                ? body.pictures.uri
+                : 'https://asset.cloudinary.com/ilham-nurrohman/5b31f4e8c4bebe1d74899c7b72ccb859',
+            }}
+            style={style.profpict}
+          />
+          <Pressable
             onPress={() => {
               setModal({ ...modal, modalUpload: true });
-            }}>
+            }}
+            style={style.pencilContainer}>
+            <Ion name="pencil" size={20} color="white" />
+          </Pressable> */}
+          <Image source={body.pictures ? {uri: body.pictures} : require('../../assets/img/profpict.png')} style={style.profpict} />
+          <Pressable style={style.pencilContainer}>
             <SimpleLineIcons name='pencil' size={20} color={'#ffffff'} style={style.pencil} />
           </Pressable>
         </View>
@@ -208,7 +214,7 @@ export default function EditProfile(props) {
           </Pressable>
         }
       </View>
-      <Toast />
+      {/* <Toast /> */}
       <Modal
         visible={modal.modalUpload}
         transparent={true}
@@ -218,12 +224,12 @@ export default function EditProfile(props) {
             <Text style={style.titleModal}>Upload Photo</Text>
             <View style={style.containerBtnUpload}>
               <Button
-                onPress={openStorage}
+                onPress={chooseFromLibrary}
                 buttonStyle={style.btnUpload}>
                 Choose from library
               </Button>
               <Button
-                onPress={openCam}
+                onPress={takePhotoFromCamera}
                 buttonStyle={style.btnUpload}>
                 Take a Photo
               </Button>

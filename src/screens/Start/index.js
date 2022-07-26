@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 import style from './style'
 
-
 export default function Start({ navigation }) {
   const [page, setPage] = useState('home')
   return (

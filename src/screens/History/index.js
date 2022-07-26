@@ -6,11 +6,9 @@ import axios from 'axios'
 import style from './style'
 import HistoryCard from '../../components/HistoryCard'
 import { REACT_APP_BE_HOST } from '@env'
-// const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
+// const REACT_APP_BE_HOST = 'http://192.168.32.238:8000';
 
 export default function History(props) {
-  const [isDelete, setIsDelete] = useState(false)
-  const [menu, setMenu] = useState([])
   const [history, setHistory] = useState([])
   const { token } = useSelector(state => state.auth.userInfo)
 
