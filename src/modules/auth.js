@@ -1,5 +1,5 @@
 // import { REACT_APP_BE_HOST } from '@env'
-const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
+const REACT_APP_BE_HOST = 'http://192.168.32.238:8000';
 import axios from 'axios'
 
 export const doLogin = (body) => {

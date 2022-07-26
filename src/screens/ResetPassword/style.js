@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
-  imageBg: {
-    flex: 1
+  imgBg: {
+    flex: 1,
   },
   imageBgClr: {
     flex: 1,
@@ -14,20 +14,27 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: '15%'
   },
   title: {
-    flex: 1,
+    // flex: 1,
     fontFamily: 'Poppins-Bold',
     color: '#ffffff',
     fontSize: 65,
     textAlignVertical: 'center',
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center'
+    textAlign: 'center'
+  },
+  subtitle: {
+    color: '#ffffff',
+    textAlign: 'center'
   },
   btnContainer: {
     flex: 1,
-    // backgroundColor: 'red'
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '10%',
+    justifyContent: 'flex-end'
   },
   input: {
     width: '80%',
@@ -36,13 +43,6 @@ export default StyleSheet.create({
     color: '#ffffff',
     fontSize: 14,
     borderBottomWidth: 2,
-    alignSelf: 'center',
-  },
-  inputPass: {
-    width: '80%',
-    fontFamily: 'Poppins-Bold',
-    color: '#ffffff',
-    fontSize: 14,
     alignSelf: 'center',
   },
   button: {
@@ -57,31 +57,9 @@ export default StyleSheet.create({
     borderRadius: 10,
     marginTop: '5%'
   },
-  gbutton: {
-    backgroundColor: '#ffffff',
-    width: '80%',
-    alignSelf: 'center',
-    height: 50,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    marginTop: '5%'
-  },
-  google: {
-    width: 20,
-    height: 20,
-    marginRight: 10
-  },
   buttonText: {
     color: '#ffffff',
     fontFamily: 'Poppins-Bold',
-    fontSize: 17
-  },
-  gbuttonText: {
-    color: '#000000',
-    fontFamily: 'Poppins-Regular',
     fontSize: 17
   },
   passContainer: {
@@ -92,11 +70,10 @@ export default StyleSheet.create({
     borderBottomColor: '#ffffff',
     borderBottomWidth: 2,
     alignSelf: 'center',
-    width: '80%'
+    width: '100%'
   },
   eye: {
     color: '#ffffff',
     fontSize: 25
   }
-
 })

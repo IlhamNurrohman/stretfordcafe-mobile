@@ -11,27 +11,28 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer(props) {
   const dispatch = useDispatch()
+  const { userData } = useSelector(state => state.user)
   return (
     <>
       <View style={style.container}>
         <View style={style.profileContainer}>
-          <Image source={require('../../assets/img/profpict.png')} style={style.profpict} />
-          <Text style={style.username}>Zulaikha</Text>
-          <Text style={style.email}>zulaikha17@gmail.com</Text>
+          <Image source={userData.pictures ? {uri: userData.pictures} : require('../../assets/img/profpict.png')} style={style.profpict} />
+          <Text style={style.username}>{userData.username ? userData.username : 'Display Name'}</Text>
+          <Text style={style.email}>{userData.email}</Text>
         </View>
         <View style={style.menuContainer}>
-          <Pressable style={style.menuList} onPress={()=> props.navigation.navigate('Profile')}>
+          <Pressable style={style.menuList} onPress={() => props.navigation.navigate('Profile')}>
             <Ionicons name='person-circle-outline' size={35} color='#6A4029' />
-            <Text style={style.menuText}>Edit Profile</Text>
+            <Text style={style.menuText}>Profile</Text>
           </Pressable>
-          <View style={style.menuList}>
+          <Pressable style={style.menuList} onPress={() => props.navigation.navigate('Cart')}>
             <Material name='cart-arrow-down' size={35} color='#6A4029' />
             <Text style={style.menuText}>Orders</Text>
-          </View>
-          <View style={style.menuList}>
+          </Pressable>
+          <Pressable style={style.menuList} onPress={()=> props.navigation.navigate('Home', {category: 'all'})}>
             <Ionicons name='fast-food-outline' size={35} color='#6A4029' />
             <Text style={style.menuText}>All menu</Text>
-          </View>
+          </Pressable>
           <View style={style.menuList}>
             <Ionicons name='newspaper-outline' size={35} color='#6A4029' />
             <Text style={style.menuText}>Privacy policy</Text>
@@ -41,13 +42,17 @@ function MyDrawer(props) {
             <Text style={style.menuText}>Security</Text>
           </View>
         </View>
-        <Pressable style={style.menuList} onPress={()=>{
+        <Pressable style={style.menuList} onPress={() => {
           dispatch(logoutAction())
           props.navigation.navigate("Start")
         }}>
           <Material name='logout' size={35} color='#6A4029' />
           <Text style={style.menuText}>Logout</Text>
         </Pressable>
+        {/* <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+        <DrawerItem />
+      </DrawerContentScrollView> */}
       </View>
     </>
   );

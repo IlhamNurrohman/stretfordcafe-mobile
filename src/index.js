@@ -1,7 +1,7 @@
-import { View, Text, StatusBar } from 'react-native'
+import { StatusBar } from 'react-native'
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import Register from './screens/Register'
 import Login from './screens/Login'
 import Forgot from './screens/Forgot'
@@ -13,7 +13,13 @@ import Cart from './screens/Cart'
 import Delivery from './screens/Delivery'
 import Payment from './screens/Payment'
 import Profile from './screens/Profile'
+import EditProfile from './screens/EditProfile'
 import History from './screens/History'
+import AllProduct from './screens/Product'
+import EditPasswordProfile from './screens/EditPasswordProfile'
+import ResetPassword from './screens/ResetPassword'
+import Welcome from './screens/Welcome'
+
 
 const Drawer = createDrawerNavigator()
 
@@ -26,7 +32,10 @@ const DrawerNav = () => {
         <Drawer.Screen name='Delivery' component={Delivery} options={{ headerShown: false }}/>
         <Drawer.Screen name='Payment' component={Payment} options={{ headerShown: false }}/>
         <Drawer.Screen name='Profile' component={Profile} options={{ headerShown: false }}/>
+        <Drawer.Screen name='EditProfile' component={EditProfile} options={{ headerShown: false }}/>
+        <Drawer.Screen name='AllProduct' component={AllProduct} options={{ headerShown: false }}/>
         <Drawer.Screen name='History' component={History} options={{ headerShown: false }}/>
+        {/* <Drawer.Screen name='EditPasswordProfile' component={EditPasswordProfile} options={{ headerShown: false }}/> */}
       </Drawer.Navigator>
   )
 }
@@ -36,16 +45,21 @@ const Router = () => {
   return (
     <>
       <StatusBar barStyle={"light-content"} hidden={true} />
-      <Navigator initialRouteName='History'
+      <Navigator 
+      initialRouteName='Start'
         screenOptions={{
           headerShown: false
-        }}>
+        }}
+        >
+        <Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
         <Screen name='Start' component={Start} options={{ headerShown: false }} />
         <Screen name='Register' component={Register} options={{ headerShown: false }}/>
         <Screen name='Login' component={Login} options={{ headerShown: false }} />
-        <Screen name='Forgot' component={Forgot} options={{ headerShown: false }} />
+        <Screen name='ResetPassword' component={ResetPassword} options={{ headerShown: false }} />
         <Screen name='Drawer' component={DrawerNav} options={{ headerShown: false }}/>
-      </Navigator>
+        <Screen name='EditPasswordProfile' component={EditPasswordProfile} options={{ headerShown: false }} />
+        <Screen name='Forgot' component={Forgot} options={{ headerShown: false }} />
+        </Navigator>
     </>
   )
 }

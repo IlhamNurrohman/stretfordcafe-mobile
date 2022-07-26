@@ -5,7 +5,8 @@ import Header from '../../components/Header'
 import axios from 'axios'
 import style from './style'
 import HistoryCard from '../../components/HistoryCard'
-const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
+import { REACT_APP_BE_HOST } from '@env'
+// const REACT_APP_BE_HOST = 'http://192.168.93.238:8000';
 
 export default function History(props) {
   const [isDelete, setIsDelete] = useState(false)
@@ -34,7 +35,7 @@ export default function History(props) {
       <ScrollView style={style.container}>
         <Text style={style.title}>Order History</Text>
         {history.length > 0 && history.map((item, idx) => (
-          <HistoryCard key={idx} id={item.id} name={item.name} pictures={item.pictures} sub_total={item.sub_total} {...props} />
+          <HistoryCard key={idx} id={item.id} pictures={item.pictures} name={item.name} sub_total={item.sub_total} size={item.size} delivery_methods_id={item.delivery_methods_id} {...props} />
         ))}
         {/* <Pressable style={isDelete ? style.cardSelect : style.card} onLongPress={() => setIsDelete(!isDelete)}>
           <Image source={require('../../assets/img/image 23.png')} style={style.img} />

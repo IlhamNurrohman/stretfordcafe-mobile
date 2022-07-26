@@ -3,11 +3,6 @@ export default StyleSheet.create({
   container: {
     paddingHorizontal: '5%'
   },
-  title: {
-    fontFamily: 'Poppins-Bold',
-    fontSize: 34,
-    color: '#000000'
-  },
   searchContainer: {
     display: 'flex',
     height: 40,
@@ -19,45 +14,16 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     // paddingVertical: 5
   },
-  searchInput:{
+  searchInput: {
     paddingVertical: 5,
     fontFamily: 'Poppins-Bold',
     fontSize: 16,
     width: '100%',
-    textAlignVertical: 'auto'
+    // textAlignVertical: 'auto'
   },
-  categoryContainer: {
-    display: 'flex',
-    flexDirection: 'row',
+  scrollViewH: {
     marginHorizontal: '5%',
-    justifyContent: 'space-between',
-    width: 800,
-  },
-  scrollViewH:{
-    marginHorizontal: '5%',
-    marginVertical: 10
-  },
-  categoryText: {
-    fontFamily: 'Poppins-Regular',
-    fontSize: 17,
-    color: '#9A9A9D',
-    marginRight: 20
-  },
-  categoryTextAct: {
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 17,
-    color: '#6A4029',
-    marginRight: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: '#6A4029'
-  },
-  productContainer: {
-    marginVertical: 20,
-    marginHorizontal: '15%'
-  },
-  seeAll: {
-    textAlign: 'right',
-    marginRight: 20
+    // marginVertical: 10
   },
   categoryText: {
     fontFamily: 'Poppins-Regular',
@@ -72,5 +38,20 @@ export default StyleSheet.create({
     marginRight: 20,
     borderBottomWidth: 2,
     borderBottomColor: '#6A4029'
+  },
+  title: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: 17,
+    color: '#6A4029'
+  },
+  sortActive: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: 15,
+    color: '#6A4029'
+  },
+  sort: {
+    fontFamily: 'Poppins-Medium',
+    fontSize: 15,
+    color: '#9A9A9D'
   },
 })
