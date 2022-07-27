@@ -3,14 +3,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import { View, Text } from 'react-native';
 import styles from './style';
 
-const Welcome = () => {
-  const { userInfo } = useSelector(state => state.auth)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    if (userInfo.token === false) {
-      dispatch(logoutAction())
-      return navigation.replace('Start');
+const Welcome = ({navigation}) => {
+  const userInfo  = useSelector(state => state.auth)
+
+  const splashscreenHandler = async () => {
+    try {
+      if (!userInfo.token) {
+        return setTimeout(() => {
+          navigation.replace('Start');
+        }, 3000)
+      }
+      setTimeout(() => {
+        navigation.replace('Drawer');
+      }, 3000)
+    } catch (error) {
+      console.log(error)
     }
+  }
+  useEffect(() => {
+    splashscreenHandler();
   }, [])
 
   return (

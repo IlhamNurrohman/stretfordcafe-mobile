@@ -17,6 +17,7 @@ import moment from 'moment';
 import DatePicker from 'react-native-date-picker';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Toast from 'react-native-toast-message';
+import { REACT_APP_BE_HOST } from '@env'
 
 const AddPromo = () => {
     const { userInfo } = useSelector(state => state.auth)

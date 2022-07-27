@@ -5,7 +5,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import style from './style'
 import { doRegister } from '../../modules/auth'
 
-
 export default function Register({ navigation }) {
   const [loading, setLoading] = useState(false)
   const [showPass, setShowPass] = useState(false)
@@ -25,7 +24,7 @@ export default function Register({ navigation }) {
   const errorToast = () => {
     Toast.show({
       type: 'error',
-      text1: err.msg
+      text1: msg
     })
   }
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function Register({ navigation }) {
 
   const registerHandler = async () => {
     try {
-      if (!input.mobile_number) {
+      if (!input.phone) {
         return setMsg('Input Phone Number')
       }
       setLoading(true)
@@ -94,6 +93,7 @@ export default function Register({ navigation }) {
           </Pressable>
         </View>
       </View>
+      <Toast />
     </ImageBackground>
   )
 }

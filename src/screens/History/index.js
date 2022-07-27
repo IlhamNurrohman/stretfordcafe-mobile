@@ -10,11 +10,11 @@ import { REACT_APP_BE_HOST } from '@env'
 
 export default function History(props) {
   const [history, setHistory] = useState([])
-  const { token } = useSelector(state => state.auth.userInfo)
+  const { userInfo } = useSelector(state => state.auth)
 
   const getHistory = async () => {
     try {
-      const config = { headers: { Authorization: `Bearer ${token}` } }
+      const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
       const response = await axios.get(`${REACT_APP_BE_HOST}/transactions`, config)
       // const response = await axios.get(URL)
       setHistory(response.data.data)

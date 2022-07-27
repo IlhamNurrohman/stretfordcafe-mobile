@@ -50,11 +50,12 @@ const Router = () => {
     <>
       <StatusBar barStyle={"light-content"} hidden={true} />
       <Navigator 
-      initialRouteName='AddProduct'
-        screenOptions={{
-          headerShown: false
-        }}
+      // initialRouteName='AddProduct'
+      //   screenOptions={{
+      //     headerShown: false
+      //   }}
         >
+        <Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
         <Screen name='Start' component={Start} options={{ headerShown: false }} />
         <Screen name='Register' component={Register} options={{ headerShown: false }}/>
         <Screen name='Login' component={Login} options={{ headerShown: false }} />
@@ -62,7 +63,6 @@ const Router = () => {
         <Screen name='Drawer' component={DrawerNav} options={{ headerShown: false }}/>
         <Screen name='EditPasswordProfile' component={EditPasswordProfile} options={{ headerShown: false }} />
         <Screen name='Forgot' component={Forgot} options={{ headerShown: false }} />
-        <Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
         </Navigator>
     </>
   )

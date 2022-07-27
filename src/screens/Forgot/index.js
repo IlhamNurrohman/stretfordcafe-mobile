@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import style from './style'
 
-export default function Forgot() {
+export default function Forgot(props) {
   const [msg, setMsg] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('')
@@ -18,6 +18,7 @@ export default function Forgot() {
        setIsLoading(true)
        const result = await axios.get(`${REACT_APP_BE_HOST}/auth/forgot-password/${input.email}`)
        console.log(result)
+       props.navigation.navigate('ResetPassword')
        setIsLoading(false)
     } catch (error) {
        console.log(error)

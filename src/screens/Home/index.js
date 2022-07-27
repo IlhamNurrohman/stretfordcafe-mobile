@@ -109,10 +109,10 @@ export default function Home(props) {
       {userData.roles_id === "admin" ?
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
           <Pressable style={style.menuList} onPress={() => props.navigation.navigate('AddProduct')}>
-            <Text>Add Product</Text>
+            <Text style={style.sortActive}>Add Product</Text>
           </Pressable>
           <Pressable style={style.menuList} onPress={() => props.navigation.navigate('AddPromo')}>
-            <Text>Add Promo</Text>
+            <Text style={style.sortActive}>Add Promo</Text>
           </Pressable>
         </View>
         :

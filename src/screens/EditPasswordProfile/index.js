@@ -20,7 +20,6 @@ export default function EditPasswordProfile(props) {
         password2: '',
     })
     const dispatch = useDispatch()
-    const { userData } = useSelector(state => state.user)
     const { userInfo } = useSelector(state => state.auth)
 
     const successToast = () => {

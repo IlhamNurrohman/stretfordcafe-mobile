@@ -136,7 +136,7 @@ export default function EditProfile(props) {
         <View style={style.imgContainer}>
           <Image source=
           {
-            file.uri
+            file && file.uri
                 ? {uri: file.uri}
                 : body.file
                 ? {uri: body.file}

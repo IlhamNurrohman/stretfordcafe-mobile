@@ -19,8 +19,8 @@ export default function EditPasswordProfile(props) {
         newPassword: '',
         confirmCode: '',
     })
-    const dispatch = useDispatch()
-    const { userInfo } = useSelector(state => state.auth)
+    // const dispatch = useDispatch()
+    // const { userInfo } = useSelector(state => state.auth)
 
     const successToast = () => {
         Toast.show({
@@ -55,11 +55,11 @@ export default function EditPasswordProfile(props) {
             setLoading(false)
         }
     }
-    useEffect(() => {
-        if (isSuccess) {
-            dispatch(getUserAction(userInfo.token))
-        }
-    }, [isSuccess])
+    // useEffect(() => {
+    //     if (isSuccess) {
+    //         dispatch(getUserAction(userInfo.token))
+    //     }
+    // }, [isSuccess])
 
     // console.log(input)
     return (
