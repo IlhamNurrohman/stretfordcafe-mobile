@@ -110,6 +110,20 @@ npm run ios
 
 Later the emulator will open itself if you have set dependencies
 
+### Preview
+
+<div style="display:flex, flex-direction: column" >
+
+<img src="src/assets/img/WhatsApp Image 2022-07-27 at 13.06.43.jpeg" style="width: 200px">
+<img src="src/assets/img/WhatsApp Image 2022-07-27 at 13.06.41.jpeg" style="width: 200px">
+
+<br>
+
+<img src="src/assets/img/WhatsApp Image 2022-07-27 at 13.06.42.jpeg" style="width: 200px">
+<img src="src/assets/img/WhatsApp Image 2022-07-27 at 13.06.43 (1).jpeg" style="width: 200px">
+
+</div>
+
 
 # Related Projects
 
